@@ -189,3 +189,83 @@
     animation: slide-in-right-kf 2000ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
+
+button {
+  cursor: pointer;
+}
+
+/* FullCalendar overrides */
+.fc .fc-toolbar-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.fc .fc-button {
+  background-color: #4a5c22;
+  border: none;
+  border-radius: 9999px;
+  padding: 6px 12px;
+}
+
+.fc .fc-button:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.fc .fc-button:disabled {
+  opacity: 0.5;
+}
+
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border: none;
+}
+
+/* cell gap 8px */
+.fc .fc-daygrid-body table {
+  border-collapse: separate;
+  border-spacing: 8px; /* gap between cells */
+}
+
+.fc .fc-daygrid-day {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.fc .fc-daygrid-day-frame {
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ffffff;
+}
+
+.fc .fc-daygrid-day-number {
+  color: #6b7280;
+  font-size: 13px;
+  width: 100%;
+  padding: 0;
+}
+
+.fc .fc-daygrid-event {
+  border-radius: 9999px;
+  border: none;
+  height: 20px;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.fc .fc-daygrid-event .fc-event-title {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+/* Each day cell fixed height (approx 160x160 square cells depending on container width) */
+.fc .fc-daygrid-day {
+  height: 160px;
+}
+
+.fc .fc-day-sat .fc-daygrid-day-frame,
+.fc .fc-day-sun .fc-daygrid-day-frame {
+  background-color: #fafaf7;
+}
