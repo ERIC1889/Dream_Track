@@ -21,9 +21,6 @@ export default function Login() {
   return (
     <div className="min-h-dvh w-screen grid grid-cols-1 md:grid-cols-2 bg-white">
       <div className="absolute top-5 left-[18px] typo-h1">DreamTrack</div>
-      <div className="absolute bottom-[10.5px] left-[18px] typo-link">
-        2025 SUMTECH NextLeap
-      </div>
       <div className="flex flex-col items-start justify-center gap-8 px-[106px] py-12">
         <div className="flex flex-col items-start justify-center gap-3 relative self-stretch w-full flex-[0_0_auto]">
           <div className="relative w-fit mt-[-1.00px] [font-family:'Inter-Bold',Helvetica] font-bold text-[#232323] text-[40px] text-center tracking-[-1.60px] leading-[44.0px] whitespace-nowrap">
