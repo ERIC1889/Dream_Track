@@ -1,33 +1,26 @@
 import { useState, useCallback } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import MultipleChoice from "../../components/quiz/MultipleChoice";
 
 export default function MultipleChoicePage() {
   const [selected, setSelected] = useState<string | undefined>(undefined);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const isRetake = searchParams.get("retake") === "1";
 
   const handleChange = useCallback((id: string) => {
     setSelected(id);
   }, []);
 
   const handleSubmit = useCallback(() => {
-    // TODO: 제출 동작(라우팅/다음 문제 로딩 등) 연결
-    // 현재는 데모 알림만 표시
-    if (selected) {
-      alert(`선택한 보기: ${selected}`);
-    } else {
-      alert("보기를 선택해주세요.");
-    }
-  }, [selected]);
+    if (!selected) return alert("보기를 선택해주세요.");
+    navigate(isRetake ? "/requet-choice?retake=1" : "/requet-choice");
+  }, [selected, navigate, isRetake]);
 
   return (
     <div className="w-full flex items-center justify-center py-10">
-      <div className="w-full max-w-[920px] px-4">
-        <header className="mb-6">
-          <h1 className="text-2xl font-semibold text-[#232323]">진단 테스트</h1>
-          <p className="text-sm text-[#6f6f6f] mt-2">
-            아래 질문에 가장 가까운 보기를 선택해주세요.
-          </p>
-        </header>
-
+      <div className="absolute top-5 left-[18px] typo-h1">DreamTrack</div>
+      <div className="w-[873px] px-4 flex flex-col justify-center h-screen">
         <MultipleChoice
           questionNumber={1}
           caption="Question"

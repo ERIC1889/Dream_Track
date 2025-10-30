@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Board() {
   const [answer, setAnswer] = useState<string>("");
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const isRetake = searchParams.get("retake") === "1";
 
   useEffect(() => {
     textareaRef.current?.focus();
@@ -12,15 +16,12 @@ export default function Board() {
     e.preventDefault();
     console.log("주관식 제출:", answer);
     alert("제출되었습니다.");
+    navigate(isRetake ? "/" : "/result");
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <header className="w-full border-b">
-        <div className="max-w-[900px] mx-auto px-6 py-6">
-          <h1 className="text-4xl font-serif">DreamTrack</h1>
-        </div>
-      </header>
+      <div className="absolute top-5 left-[18px] typo-h1">DreamTrack</div>
 
       <main className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-[700px]">
@@ -53,8 +54,6 @@ export default function Board() {
           </form>
         </div>
       </main>
-
-    
     </div>
   );
 }

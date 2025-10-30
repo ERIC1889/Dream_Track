@@ -1,9 +1,11 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
 export default function Home() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState<{
     title: string;
     description?: string;
@@ -54,7 +56,10 @@ export default function Home() {
       <div className="flex items-center gap-[57px] mb-4">
         <h1 className="typo-h1">DreamTrack</h1>
         <div className="flex gap-2">
-          <button className="w-[180px] h-[47px] rounded-full bg-[#4a5c22] text-white flex items-center justify-center gap-2 font-sans font-semibold text-[14px] leading-[1.4]">
+          <button
+            onClick={() => navigate("/quiz?retake=1")}
+            className="w-[180px] h-[47px] rounded-full bg-[#4a5c22] text-white flex items-center justify-center gap-2 font-sans font-semibold text-[14px] leading-[1.4]"
+          >
             심층검사 다시하기
             <svg
               width="7"
@@ -69,7 +74,10 @@ export default function Home() {
               />
             </svg>
           </button>
-          <button className="w-[180px] h-[47px] rounded-full bg-[#4a5c22] text-white flex items-center justify-center gap-2 font-sans font-semibold text-[14px] leading-[1.4]">
+          <button
+            onClick={() => navigate("/quiz")}
+            className="w-[180px] h-[47px] rounded-full bg-[#4a5c22] text-white flex items-center justify-center gap-2 font-sans font-semibold text-[14px] leading-[1.4]"
+          >
             퀴즈 풀기
             <svg
               width="7"

@@ -15,15 +15,7 @@ export const routes: RouteObject[] = [
   { path: "/board", element: <Board /> },
   { path: "/quiz", element: <MultipleChoicePage /> },
   { path: "/", element: <Home /> },
-  { path: "/diagnostic", element: <div>진단 시작</div> },
-  {
-    path: "/diagnostic/session/:sessionId",
-    element: <div>진단 진행(세션)</div>,
-  },
-  { path: "/results", element: <div>추천(결과)</div> },
   { path: "/result", element: <Result /> },
-  { path: "/results", element: <Result /> },
-  { path: "/report/:id", element: <div>리포트 상세</div> },
 ];
 
 export const router = createBrowserRouter(routes);

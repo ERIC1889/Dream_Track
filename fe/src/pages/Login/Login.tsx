@@ -16,6 +16,7 @@ export default function Login() {
   const onSubmit = (values: LoginFormValues) => {
     // TODO: integrate API call
     console.log("login submit", values);
+    navigate("/quiz");
   };
 
   return (

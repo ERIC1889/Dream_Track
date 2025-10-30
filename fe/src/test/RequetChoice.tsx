@@ -1,4 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,6 +7,9 @@ import "slick-carousel/slick/slick-theme.css";
 export default function RequetChoice() {
   const sliderRef = useRef<any>(null);
   const [current, setCurrent] = useState<number>(0);
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const isRetake = searchParams.get("retake") === "1";
 
   const questions = ["‘성공적인 진로’는 나에게 어떤 의미인가요?"];
 
@@ -37,19 +41,14 @@ export default function RequetChoice() {
       sliderRef.current?.slickNext();
     } else {
       console.log("최종 제출:", answers);
+      navigate(isRetake ? "/board?retake=1" : "/board");
     }
-  }, [current, questions.length, answers]);
+  }, [current, questions.length, answers, navigate, isRetake]);
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* header aligned left like the image */}
-      <header className="w-full border-b">
-        <div className="max-w-[900px] mx-auto px-6 py-6">
-          <div className="text-4xl font-serif">DreamTrack</div>
-        </div>
-      </header>
-      
-
+      <div className="absolute top-5 left-[18px] typo-h1">DreamTrack</div>
       {/* main area: centered vertically and horizontally */}
       <main className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-[873px] mx-auto">
@@ -110,7 +109,9 @@ export default function RequetChoice() {
                           max={5}
                           step={1}
                           value={value}
-                          onChange={(e) => handleRangeChange(idx, parseInt(e.target.value, 10))}
+                          onChange={(e) =>
+                            handleRangeChange(idx, parseInt(e.target.value, 10))
+                          }
                           className="likert-range"
                           aria-label="5점 척도"
                         />
@@ -136,8 +137,6 @@ export default function RequetChoice() {
           </Slider>
         </div>
       </main>
-
-    
     </div>
   );
 }
