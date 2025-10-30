@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import MultipleChoicePage from "./pages/Quiz/MultipleChoicePage";
 import Home from "./pages/Home/Home";
+import Result from "./pages/Result/Result";
 
 export const routes: RouteObject[] = [
   { path: "/login", element: <Login /> },
@@ -16,6 +17,8 @@ export const routes: RouteObject[] = [
     element: <div>진단 진행(세션)</div>,
   },
   { path: "/results", element: <div>추천(결과)</div> },
+  { path: "/result", element: <Result /> },
+  { path: "/results", element: <Result /> },
   { path: "/report/:id", element: <div>리포트 상세</div> },
 ];
 
