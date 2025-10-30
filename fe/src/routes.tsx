@@ -3,10 +3,14 @@ import type { RouteObject } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import RequetChoice from "./test/RequetChoice";
+import Board from "./test/Board";
 
 export const routes: RouteObject[] = [
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <Signup /> },
+  { path: "/requet-choice", element: <RequetChoice /> },
+  { path: "/board", element: <Board /> },
   {
     element: <Layout />,
     children: [
