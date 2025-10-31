@@ -8,10 +8,10 @@ import { router } from "./routes";
 import { queryClient } from "./queryClient";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  //<StrictMode>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  </StrictMode>
+  //</StrictMode>
 );
